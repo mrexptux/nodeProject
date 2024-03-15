@@ -1,20 +1,25 @@
 {
-  "name": "nose_basico",
+  "name": "node",
   "version": "1.0.0",
-  "description": "proyecto basico con nodejs",
+  "description": "boilerplate para node con jwt, cloudinary y mongoose",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "dev": "nodemon index.js"
   },
-  "author": "YO",
+  "author": "Mario Gil, Paul Alexander, Pol Aguilar",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
     "cloudinary": "^2.0.3",
-    "express": "^4.18.3",
-    "express-fileupload": "^1.4.3",
-    "mongoose": "^8.2.1",
-    "mongose": "^0.0.2-security",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "mongoose": "^8.0.4",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.0"
   }
 }
