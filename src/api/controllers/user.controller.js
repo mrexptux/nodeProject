@@ -12,6 +12,7 @@ const register = async (req, res, next) => {
     const user = new User(req.body);
 
     const userExist = await User.findOne({ email: user.email });
+
     if (userExist) {
       return next(setError("404", "This email has already been used."));
     }
@@ -72,7 +73,7 @@ const login = async (req, res, next) => {
 
 /*const isAdmin = (req, res, next) => {
 
-  const data = req.headers.authorization.split(" ");
+  const data = req.headers.authorization.split(" ")[1];
   console.log(data);
 
 

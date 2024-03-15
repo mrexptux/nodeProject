@@ -2,8 +2,10 @@ const express = require("express");
 const proveedorRouter = express.Router();
 const { createProveedor, getAllProveedores, getProveedorById, updateProveedor, deleteProveedor } = require("../controllers/proveedor.controller");
 const { isAuth } = require('../middlewares/auth.middleware');
+const { upload, uploadToCloudinary } = require("../middlewares/file.middleware");
 
-proveedorRouter.post("/", createProveedor);
+
+proveedorRouter.post("/", [isAuth, upload.single("coverImage")], createProveedor);
 proveedorRouter.get("/", getAllProveedores);
 proveedorRouter.get("/:id", getProveedorById);
 proveedorRouter.patch("/:id", updateProveedor);

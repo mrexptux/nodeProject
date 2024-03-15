@@ -1,15 +1,20 @@
 const Producto = require("../models/producto.model");
-const { HTTPSTATUSCODE } = require("../../utils/httpStatusCode"); Producto
+const { HTTPSTATUSCODE } = require("../../utils/httpStatusCode");
+const multer = require('multer')
+const upload = multer({ dest: '../public/' })
+
 const createProducto = async (req, res, next) => {
   try {
 
     const { categoria, precio } = req.body;
     const coverImage = req.file ? req.file.path : "";
+
     const producto = await Producto.create({
       categoria,
       precio,
       coverImage
     });
+
     res.status(201).json({
       status: 201,
       message: HTTPSTATUSCODE[201],

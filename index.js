@@ -9,6 +9,7 @@ const logger = require("morgan");
 const { connectMongo } = require("./src/data/mongo");
 
 
+
 //const { configCloudinary } = require("./src/utils/cloudinary/config");
 // 1.3 las rutas:
 const userRouter = require("./src/api/routes/user.routes");
@@ -23,8 +24,9 @@ const { notFoundHandler, errorHandler } = require("./src/api/middlewares/error.m
 require("dotenv").config(); // desde aquí se cargan las var de entorno del .env, hasta aquí no existen
 const PORT = process.env.PORT || 3002;
 const app = express();
-app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // usar urlencode para las urls.
+app.use(express.json());
+
 connectMongo();
 
 

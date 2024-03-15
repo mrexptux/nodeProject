@@ -6,7 +6,7 @@ const { upload, uploadToCloudinary } = require("../middlewares/file.middleware")
 const { isAuth } = require("../middlewares/auth.middleware");
 
 // Ruta para crear un nuevo álbum
-productoRouter.post("/", createProducto);
+productoRouter.post("/", [isAuth, upload.single("coverImage")], createProducto);
 productoRouter.get("/", getAllProductos);
 productoRouter.get("/:id", getProductoById);
 productoRouter.put("/:id", updateProducto);
