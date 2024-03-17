@@ -111,10 +111,13 @@ const deleteProveedor = async (req, res, next) => {
   try {
     const proveedor = await Proveedor.findByIdAndDelete(req.params.id);
     if (proveedor) {
-      res.status(204).json({
-        status: 204,
-        message: HTTPSTATUSCODE[204],
+
+      res.status(200).json({
+        status: 200,
+        message: HTTPSTATUSCODE[200],
+        data: proveedor
       });
+
     } else {
       res.status(404).json({
         status: 404,

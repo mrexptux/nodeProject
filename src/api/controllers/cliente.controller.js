@@ -3,20 +3,18 @@ const { HTTPSTATUSCODE } = require("../../utils/httpStatusCode");
 
 const createCliente = async (req, res, next) => {
   try {
+
     //const cliente = await Cliente.create(req.body);
     const { nombre, email, direccion } = req.body;
     const coverImage = req.file ? req.file.path : "";
-    const cliente = await Cliente.create({
-      nombre,
-      email,
-      direccion,
-      coverImage
-    });
+    const cliente = await Cliente.create({ nombre, email, direccion, coverImage });
+
     res.status(201).json({
       status: 201,
       message: HTTPSTATUSCODE[201],
       data: cliente,
     });
+
   } catch (error) {
     next(error);
   }
@@ -57,15 +55,17 @@ const getClienteById = async (req, res, next) => {
 
 const updateCliente = async (req, res, next) => {
   try {
-    const cliente = await Cliente.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+
+    const cliente = await Cliente.findByIdAndUpdate(req.params.id, req.body, { new: true });
+
     if (cliente) {
+
       res.status(200).json({
         status: 200,
         message: HTTPSTATUSCODE[200],
         data: cliente,
       });
+
     } else {
       res.status(404).json({
         status: 404,
@@ -79,17 +79,15 @@ const updateCliente = async (req, res, next) => {
 
 const addClienteCover = async (req, res, next) => {
   try {
+
     if (!req.file) {
       return res.status(400).json({
         status: 400,
         message: "No file in the request.",
       });
     }
-    const cliente = await Cliente.findByIdAndUpdate(
-      req.params.id,
-      { coverImage: req.file.path },
-      { new: true }
-    );
+
+    const cliente = await Cliente.findByIdAndUpdate(req.params.id, { coverImage: req.file.path }, { new: true });
 
     if (cliente) {
       res.status(200).json({
@@ -109,13 +107,17 @@ const addClienteCover = async (req, res, next) => {
 };
 
 const deleteCliente = async (req, res, next) => {
+
   try {
     const cliente = await Cliente.findByIdAndDelete(req.params.id);
     if (cliente) {
-      res.status(204).json({
-        status: 204,
-        message: HTTPSTATUSCODE[204],
+
+      res.status(200).json({
+        status: 200,
+        message: HTTPSTATUSCODE[200],
+        data: cliente,
       });
+
     } else {
       res.status(404).json({
         status: 404,
@@ -125,6 +127,7 @@ const deleteCliente = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+
 };
 
 
