@@ -17,6 +17,8 @@ ver package.json para la lista completa de librerías.
 
 2. Instalar dependencias con: npm i
 
+3. Iniciamos el proyecto con el comando npm dev run
+
 
 # ENLACES
 
